@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <section className="relative flex flex-col-reverse md:flex-row items-center justify-between min-h-screen bg-[#0e0e0e] text-white px-8 md:px-24 pt-24">
       
-      {/* ===== LEFT - TEXT CONTENT ===== */}
+
       <div className="z-10 flex-1">
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
