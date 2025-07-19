@@ -95,18 +95,9 @@ export default function Home() {
           </a>
         </motion.div>
 
-        {/* SCROLL DOWN INDICATOR */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.6 }}
-          className="mt-12 animate-bounce text-gray-500 text-sm"
-        >
-          ↓ scroll down
-        </motion.div>
+
       </div>
 
-      {/* ===== RIGHT - BLOBS BACKGROUND ===== */}
       <div className="relative flex-1 w-full h-[400px] md:h-[500px]">
         <div className="absolute top-0 right-0 w-72 h-72 bg-cyan-500 rounded-full blur-3xl opacity-20 animate-pulse" />
         <div className="absolute bottom-10 left-10 w-60 h-60 bg-fuchsia-600 rounded-full blur-2xl opacity-20 animate-pulse" />
