@@ -64,11 +64,16 @@ export default function Projects() {
 
   return (
     <AnimatedPage>
-      <div className="min-h-screen bg-[#121212] text-white px-4 py-10 max-w-5xl mx-auto">
-        <h2 className="text-4xl font-bold text-white mb-10 text-center underline decoration-cyan-400 underline-offset-8">
+      <div id="projects" className="relative min-h-screen bg-[#121212] text-white px-4 py-16 max-w-6xl mx-auto">
+        {/* Glow background blobs */}
+        <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-500 rounded-full blur-3xl opacity-20 animate-pulse z-0" />
+        <div className="absolute bottom-10 right-10 w-60 h-60 bg-fuchsia-600 rounded-full blur-2xl opacity-20 animate-pulse z-0" />
+
+        <h2 className="relative z-10 text-4xl font-bold text-white mb-12 text-center underline decoration-cyan-400 underline-offset-8">
           Projects
         </h2>
-        <div className="grid gap-6 md:grid-cols-2">
+        
+        <div className="relative z-10 grid gap-6 md:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard key={project.id} {...project} />
           ))}
