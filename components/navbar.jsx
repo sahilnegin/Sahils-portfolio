@@ -96,17 +96,18 @@
 //   )
 // }
 import React, { useEffect, useState } from "react";
+import { FaGithub } from "react-icons/fa";
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const sectionIds = ["home", "projects", "skills", "contact"];
-    const sectionElements = sectionIds.map(id => document.getElementById(id));
+    const sectionElements = sectionIds.map((id) => document.getElementById(id));
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries.find(entry => entry.isIntersecting);
+        const visible = entries.find((entry) => entry.isIntersecting);
         if (visible) {
           setActiveSection(visible.target.id);
         }
@@ -114,16 +115,16 @@ const Navbar = () => {
       {
         root: null,
         rootMargin: "0px",
-        threshold: 0.6, // only mark active when 60% visible
+        threshold: 0.6,
       }
     );
 
-    sectionElements.forEach(section => {
+    sectionElements.forEach((section) => {
       if (section) observer.observe(section);
     });
 
     return () => {
-      sectionElements.forEach(section => {
+      sectionElements.forEach((section) => {
         if (section) observer.unobserve(section);
       });
     };
@@ -137,23 +138,37 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-[#0f0f0f] z-50 shadow-md">
-      <ul className="flex justify-center space-x-8 py-4 text-white font-semibold">
+    <nav className="flex justify-between items-center px-6 py-4 bg-zinc-900 text-white shadow-md fixed top-0 left-0 right-0 z-50">
+      {/* Logo */}
+      <div className="text-cyan-400 font-mono text-xl font-bold">
+        &lt;Sahil.dev /&gt;
+      </div>
+
+      {/* Dynamic Nav Links */}
+      <ul className="flex gap-8 text-white font-medium">
         {navItems.map((item) => (
-          <li key={item.id}>
-            <a
-              href={`#${item.id}`}
-              className={`hover:text-yellow-400 transition-all duration-300 ${
-                activeSection === item.id
-                  ? "border-b-2 border-yellow-400 pb-1"
-                  : ""
-              }`}
-            >
-              {item.label}
-            </a>
+          <li
+            key={item.id}
+            className={`cursor-pointer transition ${
+              activeSection === item.id
+                ? "text-cyan-400 border-b-2 border-cyan-400"
+                : "hover:text-cyan-400"
+            }`}
+          >
+            <a href={`#${item.id}`}>{item.label}</a>
           </li>
         ))}
       </ul>
+
+      {/* GitHub Icon */}
+      <a
+        href="https://github.com/yourusername"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-white hover:text-cyan-400 transition text-xl"
+      >
+        <FaGithub />
+      </a>
     </nav>
   );
 };
